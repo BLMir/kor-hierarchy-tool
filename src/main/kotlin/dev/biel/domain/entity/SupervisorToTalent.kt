@@ -1,4 +1,4 @@
-package dev.bl.domain.entity
+package dev.biel.domain.entity
 
 import org.jetbrains.exposed.sql.Table
 

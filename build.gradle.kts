@@ -37,4 +37,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.xerial:sqlite-jdbc:3.30.1")
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
+
 }

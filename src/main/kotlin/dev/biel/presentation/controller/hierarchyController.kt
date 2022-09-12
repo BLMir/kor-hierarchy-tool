@@ -1,5 +1,6 @@
 package dev.biel.presentation.controller
 
+import dev.biel.application.service.ValidationService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -12,8 +13,12 @@ fun Route.hierarchyController(){
             try {
                 val request = call.receive<Map<String,String>>()
 
+                ValidationService().start(request)
             } catch (e:Exception) {
-                call.respondText(status = HttpStatusCode.BadRequest, text = e.message ?: "no specific error message")
+                call.respondText(
+                    status = HttpStatusCode.BadRequest,
+                    text = e.message ?: "no specific error message"
+                )
             }
         }
     }

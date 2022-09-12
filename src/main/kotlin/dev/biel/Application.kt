@@ -1,7 +1,7 @@
 package dev.biel
 
 import dev.biel.infrastructure.ktor.*
-import dev.bl.infrastructure.DatabaseFactory
+import dev.biel.infrastructure.DatabaseFactory
 import io.ktor.server.application.*
 
 fun main(args: Array<String>): Unit {
@@ -12,6 +12,6 @@ fun main(args: Array<String>): Unit {
 fun Application.module() {
     DatabaseFactory.init(environment.config)
     configureSerialization()
-    configureSecurity()
+    configureSecurity(environment.config)
     configureRouting()
 }

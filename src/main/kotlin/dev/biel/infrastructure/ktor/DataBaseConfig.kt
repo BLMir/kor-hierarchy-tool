@@ -1,6 +1,6 @@
-package dev.bl.infrastructure
+package dev.biel.infrastructure
 
-import dev.bl.domain.entity.SupervisorToTalent
+import dev.biel.domain.entity.SupervisorToTalent
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.Database
