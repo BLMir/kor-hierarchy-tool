@@ -1,0 +1,1 @@
+rootProject.name = "dev.biel.ktor-hierarchy-tool"
