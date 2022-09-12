@@ -2,9 +2,9 @@ package dev.biel.domain.entity
 
 import org.jetbrains.exposed.sql.Table
 
-object SupervisorToTalent : Table() {
-    val supervisor = varchar("supervisor", 50)// Column<String>
+object TalentToSupervisors : Table() {
     val talent = varchar("talent", 50) // Column<String>
+    val supervisor = varchar("supervisor", 50)// Column<String>
 
     override val primaryKey = PrimaryKey(talent, name = "PK_ReportingLine_ID")
 }
