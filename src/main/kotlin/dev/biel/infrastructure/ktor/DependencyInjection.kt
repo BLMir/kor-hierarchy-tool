@@ -1,6 +1,7 @@
 package dev.biel.infrastructure.ktor
 
 import dev.biel.application.service.HierarchyService
+import dev.biel.application.service.TalentService
 import io.ktor.server.application.*
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -11,9 +12,13 @@ val hierarchyModule = module {
     singleOf (::HierarchyService)
 }
 
+val talentModule = module {
+    singleOf (::TalentService)
+}
+
 fun Application.configDependencyInjection() {
     install(Koin) {
         slf4jLogger()
-        modules(hierarchyModule)
+        modules(hierarchyModule,talentModule)
     }
 }

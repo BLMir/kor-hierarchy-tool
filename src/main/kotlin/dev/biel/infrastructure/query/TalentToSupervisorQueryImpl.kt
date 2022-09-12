@@ -3,15 +3,13 @@ package dev.biel.infrastructure.query
 import dev.biel.domain.entity.TalentToSupervisors
 import dev.biel.domain.repository.TalentToSupervisorRepository
 import dev.biel.infrastructure.DatabaseFactory
+import dev.biel.infrastructure.DatabaseFactory.dbQuery
 import dev.biel.model.TalentToSupervisorObj
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.batchInsert
-import org.jetbrains.exposed.sql.deleteAll
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 
 class TalentToSupervisorQueryImpl: TalentToSupervisorRepository {
     override suspend fun persistAll(reportingLineList: Map<String, String>) {
-        DatabaseFactory.dbQuery {
+        dbQuery {
             TalentToSupervisors.batchInsert(reportingLineList.toList()) { row ->
                 this[TalentToSupervisors.talent] = row.first
                 this[TalentToSupervisors.supervisor] = row.second
@@ -19,12 +17,17 @@ class TalentToSupervisorQueryImpl: TalentToSupervisorRepository {
         }
     }
 
-    override suspend fun getAll(): List<TalentToSupervisorObj> = DatabaseFactory.dbQuery {
+    override suspend fun getAll(): List<TalentToSupervisorObj> = dbQuery {
         TalentToSupervisors.selectAll().map(::rowToReportingLine)
     }
 
-    override suspend fun flush(): Unit = DatabaseFactory.dbQuery {
+    override suspend fun flush(): Unit = dbQuery {
         TalentToSupervisors.deleteAll()
+    }
+
+    override suspend fun getByTalent(talent: String): TalentToSupervisorObj? = dbQuery {
+        TalentToSupervisors.select { TalentToSupervisors.talent eq talent }.map(::rowToReportingLine).singleOrNull()
+
     }
 
     private fun rowToReportingLine(row: ResultRow) = TalentToSupervisorObj(

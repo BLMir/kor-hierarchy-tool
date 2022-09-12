@@ -11,7 +11,7 @@ class HierarchyService {
         dao.persistAll(talentToSupervisorMap)
     }
 
-    suspend fun fetch(): String {
+    suspend fun fetch(): Map<String, Map<String,Any>> {
         val hierarchyHelper = HierarchyHelper()
         val talentSupervisorList = dao.getAll()
 
@@ -22,9 +22,8 @@ class HierarchyService {
         hierarchyHelper.ToFlatOrder(root,orderElementList)
         val result = hierarchyHelper.transformToNestedMap(orderElementList)
         val rootValue = result[root] ?: mapOf()
-        val gson = Gson()
 
-        return gson.toJson(mapOf(root to rootValue))
+        return mapOf(root to rootValue)
     }
 
     private fun List<TalentToSupervisorObj>.toSupervisorToTalentsList(hierarchyHelper: HierarchyHelper) = this.forEach{ talentToSupervisor ->

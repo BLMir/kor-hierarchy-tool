@@ -1,5 +1,6 @@
 package dev.biel.presentation.controller
 
+import com.google.gson.Gson
 import dev.biel.application.service.HierarchyService
 import dev.biel.application.service.ValidationService
 import io.ktor.http.*
@@ -12,17 +13,18 @@ import org.koin.ktor.ext.inject
 fun Route.hierarchyController(){
     val hierarchyService by inject<HierarchyService> ()
 
-    route("/hierarchy") {
+    route("hierarchy") {
         post {
             try {
                 val request = call.receive<Map<String,String>>()
                 ValidationService().start(request)
 
                 hierarchyService.inject(request)
+                val gson = Gson()
                 val jsonResult = hierarchyService.fetch()
                 call.respondText(
                     status = HttpStatusCode.Created,
-                    text = jsonResult,
+                    text = gson.toJson(jsonResult),
                     contentType = ContentType("application","json")
                 )
             } catch (e:Exception) {
