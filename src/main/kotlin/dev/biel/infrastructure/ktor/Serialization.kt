@@ -14,13 +14,4 @@ fun Application.configureSerialization() {
         gson {
             }
     }
-
-    routing {
-        get("/json/kotlinx-serialization") {
-                call.respond(mapOf("hello" to "world"))
-            }
-        get("/json/gson") {
-                call.respond(mapOf("hello" to "world"))
-            }
-    }
 }

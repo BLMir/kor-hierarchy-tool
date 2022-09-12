@@ -2,7 +2,6 @@ package dev.biel.presentation.controller
 
 import dev.biel.application.service.HierarchyService
 import dev.biel.application.service.ValidationService
-import dev.biel.infrastructure.query.dao
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
