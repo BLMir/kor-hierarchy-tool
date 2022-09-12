@@ -1,4 +1,4 @@
-package dev.biel.infrastructure
+package dev.biel.infrastructure.ktor
 
 import dev.biel.domain.entity.TalentToSupervisors
 import io.ktor.server.config.*
@@ -7,7 +7,6 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
-
 
 object DatabaseFactory {
     fun init(config: ApplicationConfig) {

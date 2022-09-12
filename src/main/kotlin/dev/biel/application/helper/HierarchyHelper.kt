@@ -2,7 +2,6 @@ package dev.biel.application.helper
 
 import dev.biel.application.common.getRoot
 import dev.biel.model.TalentToSupervisorObj
-import java.util.ArrayDeque
 
 class HierarchyHelper {
     val supervisorToTalentList: MutableMap<String, MutableSet<String>> = LinkedHashMap()

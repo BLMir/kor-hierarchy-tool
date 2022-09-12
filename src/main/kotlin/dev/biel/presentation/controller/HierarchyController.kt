@@ -18,7 +18,6 @@ fun Route.hierarchyController(){
             try {
                 val request = call.receive<Map<String,String>>()
                 ValidationService().start(request)
-
                 hierarchyService.inject(request)
                 val gson = Gson()
                 val jsonResult = hierarchyService.fetch()

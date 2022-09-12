@@ -1,7 +1,6 @@
 package dev.biel
 
 import dev.biel.infrastructure.ktor.*
-import dev.biel.infrastructure.DatabaseFactory
 import io.ktor.server.application.*
 
 fun main(args: Array<String>): Unit {

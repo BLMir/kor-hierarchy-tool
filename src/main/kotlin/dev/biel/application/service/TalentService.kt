@@ -1,6 +1,6 @@
 package dev.biel.application.service
 
-import dev.biel.infrastructure.query.dao
+import dev.biel.infrastructure.query.TalentToSupervisorDAO
 
 class TalentService {
     private val level = 2
@@ -9,7 +9,7 @@ class TalentService {
          val supervisorsList = mutableSetOf<String?>()
          var supervisor = talent
          repeat(level){
-            supervisor = dao.getByTalent(supervisor)?.supervisor ?: return@repeat
+            supervisor = TalentToSupervisorDAO.getByTalent(supervisor)?.supervisor ?: return@repeat
             supervisorsList.add(supervisor)
          }
 

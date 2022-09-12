@@ -67,3 +67,13 @@ curl --location --request POST 'http://0.0.0.0:8081/hierarchy' \
 curl --location --request GET 'http://0.0.0.0:8081/talent/Biel/supervisor' \
 --header 'Authorization: Basic YWRtaW46YWRtaW4='
 ```
+
+##NEXT STEPS?
+
+* Better exception handling
+* Mod programming with an other dev. to make easier hierarchy tree process( if it is possible )
+* Dockerize
+* Secret handling
+* Add different .conf for each environment
+
+

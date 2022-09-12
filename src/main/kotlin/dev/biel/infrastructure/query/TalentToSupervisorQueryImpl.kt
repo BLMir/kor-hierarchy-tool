@@ -2,8 +2,7 @@ package dev.biel.infrastructure.query
 
 import dev.biel.domain.entity.TalentToSupervisors
 import dev.biel.domain.repository.TalentToSupervisorRepository
-import dev.biel.infrastructure.DatabaseFactory
-import dev.biel.infrastructure.DatabaseFactory.dbQuery
+import dev.biel.infrastructure.ktor.DatabaseFactory.dbQuery
 import dev.biel.model.TalentToSupervisorObj
 import org.jetbrains.exposed.sql.*
 
@@ -36,4 +35,4 @@ class TalentToSupervisorQueryImpl: TalentToSupervisorRepository {
     )
 }
 
-val dao: TalentToSupervisorRepository = TalentToSupervisorQueryImpl()
+val TalentToSupervisorDAO: TalentToSupervisorRepository = TalentToSupervisorQueryImpl()
