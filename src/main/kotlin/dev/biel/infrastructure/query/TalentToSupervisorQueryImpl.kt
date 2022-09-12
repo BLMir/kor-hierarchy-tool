@@ -3,6 +3,7 @@ package dev.biel.infrastructure.query
 import dev.biel.domain.entity.TalentToSupervisors
 import dev.biel.domain.repository.TalentToSupervisorRepository
 import dev.biel.infrastructure.DatabaseFactory
+import dev.biel.model.TalentToSupervisorObj
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.deleteAll
@@ -18,7 +19,7 @@ class TalentToSupervisorQueryImpl: TalentToSupervisorRepository {
         }
     }
 
-    override suspend fun getAll(): List<dev.biel.model.TalentToSupervisor> = DatabaseFactory.dbQuery {
+    override suspend fun getAll(): List<TalentToSupervisorObj> = DatabaseFactory.dbQuery {
         TalentToSupervisors.selectAll().map(::rowToReportingLine)
     }
 
@@ -26,8 +27,10 @@ class TalentToSupervisorQueryImpl: TalentToSupervisorRepository {
         TalentToSupervisors.deleteAll()
     }
 
-    private fun rowToReportingLine(row: ResultRow) = dev.biel.model.TalentToSupervisor(
+    private fun rowToReportingLine(row: ResultRow) = TalentToSupervisorObj(
         talent = row[TalentToSupervisors.talent],
         supervisor = row[TalentToSupervisors.supervisor],
     )
 }
+
+val dao: TalentToSupervisorRepository = TalentToSupervisorQueryImpl()

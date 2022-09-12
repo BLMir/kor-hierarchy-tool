@@ -2,6 +2,8 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val exposedVersion: String by project
+val koinVersion: String by project
+
 
 plugins {
     application
@@ -38,5 +40,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.xerial:sqlite-jdbc:3.30.1")
     implementation("io.ktor:ktor-server-auth:$ktor_version")
-
+    implementation("io.insert-koin:koin-ktor:$koinVersion")
+    implementation("io.insert-koin:koin-logger-slf4j:$koinVersion")
 }

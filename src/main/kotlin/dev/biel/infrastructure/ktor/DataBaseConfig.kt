@@ -1,6 +1,6 @@
 package dev.biel.infrastructure
 
-import dev.biel.domain.entity.SupervisorToTalent
+import dev.biel.domain.entity.TalentToSupervisors
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.Database
@@ -15,7 +15,7 @@ object DatabaseFactory {
         val host = config.property("ktor.database.jdbcURL").getString()
         val database = Database.connect(host, driverClassName)
         transaction(database) {
-            SchemaUtils.create(SupervisorToTalent)
+            SchemaUtils.create(TalentToSupervisors)
         }
     }
 
