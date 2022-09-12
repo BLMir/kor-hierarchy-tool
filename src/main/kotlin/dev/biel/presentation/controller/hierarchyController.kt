@@ -14,6 +14,11 @@ fun Route.hierarchyController(){
                 val request = call.receive<Map<String,String>>()
 
                 ValidationService().start(request)
+
+                call.respondText(
+                    status = HttpStatusCode.Created,
+                    text = "validated"
+                )
             } catch (e:Exception) {
                 call.respondText(
                     status = HttpStatusCode.BadRequest,
