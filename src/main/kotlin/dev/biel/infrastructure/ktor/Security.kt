@@ -1,4 +1,4 @@
-package dev.biel.plugins
+package dev.biel.infrastructure.ktor
 
 import io.ktor.server.auth.*
 import io.ktor.util.*

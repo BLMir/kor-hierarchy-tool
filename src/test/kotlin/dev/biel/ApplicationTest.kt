@@ -1,20 +1,11 @@
 package dev.biel
 
-import io.ktor.server.routing.*
 import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
-import io.ktor.server.plugins.contentnegotiation.*
-import io.ktor.serialization.gson.*
-import io.ktor.server.auth.*
-import io.ktor.util.*
-import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.request.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import kotlin.test.*
 import io.ktor.server.testing.*
-import dev.biel.plugins.*
+import dev.biel.infrastructure.ktor.configureRouting
 
 class ApplicationTest {
     @Test
